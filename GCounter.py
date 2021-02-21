@@ -1,5 +1,3 @@
-from itertools import chain
-
 GCounter = dict
 
 def zero():
@@ -12,8 +10,4 @@ def inc(c: GCounter, key):
     c[key] = c.get(key, 0) + 1
 
 def merge(a: GCounter, b:GCounter):
-    ret = GCounter()
-    for k, v in chain(a.items(), b.items()):
-        ret[k] = max(ret.get(k, 0), v)
-    return ret
-    
+    return { key: max(a.get(key, 0), b.get(key, 0)) for key in set(a.keys()) | set(b.keys()) }
