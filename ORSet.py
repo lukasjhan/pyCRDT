@@ -30,7 +30,6 @@ def merge(s1: ORSet, s2: ORSet):
         for key in set(rem_1.keys()) | set(rem_2.keys()) }
 
     cleared_merged_rem = { key: merged_rem[key] for key in set(merged_rem.keys())
-        if VClock.compare(merged_add.get(key, VClock.zero()), merged_rem[key]) == VClock.Ord.Gt or 
-        VClock.compare(merged_add.get(key, VClock.zero()), merged_rem[key]) == VClock.Ord.Eq }
+        if VClock.compare(merged_add.get(key, VClock.zero()), merged_rem[key]) == VClock.Ord.Lt }
 
     return (merged_add, cleared_merged_rem)
