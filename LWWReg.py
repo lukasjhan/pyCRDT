@@ -11,6 +11,7 @@ def set_val(r: LWWReg, value, timestamp):
     if (r['timestamp'] < timestamp):
         r['value'] = value
         r['timestamp'] = timestamp
+    return r
 
 def merge(r1: LWWReg, r2: LWWReg):
     if (r1['timestamp'] > r2['timestamp']):

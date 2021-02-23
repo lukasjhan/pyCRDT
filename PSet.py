@@ -12,11 +12,11 @@ def value(a: PSet):
 
 def add(a: PSet, value):
     add, rem = a
-    add.add(value)
+    return add.add(value)
 
 def rem(a: PSet, value):
     add, rem = a
-    rem.add(value)
+    return rem.add(value)
 
 def merge(a: PSet, b: PSet):
     add_a, rem_a = a

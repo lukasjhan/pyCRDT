@@ -8,6 +8,7 @@ def value(s: GSet):
 
 def add(s: GSet, value):
     s.add(value)
+    return s
 
 def merge(a: GSet, b: GSet):
     return a | b

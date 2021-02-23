@@ -1,11 +1,17 @@
-import LWWReg, utils
+import ORSet
 
-a = LWWReg.zero()
+a = ORSet.zero()
+b = ORSet.zero()
 
-LWWReg.set_val(a, 'hi', utils.now())
+ORSet.add(a, 'a', 1)
+ORSet.add(a, 'a', 2)
+ORSet.rem(a, 'a', 1)
+print(a)
 
-b = LWWReg.zero()
-LWWReg.set_val(b, 'tese', utils.now())
+ORSet.add(b, 'b', 1)
+ORSet.add(b, 'b', 2)
+ORSet.rem(b, 'b', 2)
+print(b)
 
-c = LWWReg.merge(a, b)
+c = ORSet.merge(a, b)
 print(c)

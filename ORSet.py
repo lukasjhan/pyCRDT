@@ -14,6 +14,7 @@ def value(s: ORSet):
 def add(s: ORSet, replica_id, value):
     add, rem = s
     add[value] = VClock.inc(add.get(value, VClock.zero()), replica_id)
+    print(add[value])
 
 def rem(s: ORSet, replica_id, value):
     add, rem = s
@@ -30,6 +31,7 @@ def merge(s1: ORSet, s2: ORSet):
         for key in set(rem_1.keys()) | set(rem_2.keys()) }
 
     cleared_merged_rem = { key: merged_rem[key] for key in set(merged_rem.keys())
-        if VClock.compare(merged_add.get(key, VClock.zero()), merged_rem[key]) == VClock.Ord.Lt }
+        if VClock.compare(merged_add.get(key, VClock.zero()), merged_rem[key]) == VClock.Ord.Lt or 
+            VClock.compare(merged_add.get(key, VClock.zero()), merged_rem[key]) == VClock.Ord.Cc }
 
     return (merged_add, cleared_merged_rem)

@@ -12,11 +12,11 @@ def value(pn: PNCounter):
 
 def inc(pn: PNCounter, key):
     inc, dec = pn
-    GCounter.inc(inc, key)
+    return GCounter.inc(inc, key)
 
 def dec(pn: PNCounter, key):
     inc, dec = pn
-    GCounter.inc(dec, key)
+    return GCounter.inc(dec, key)
 
 def merge(a: PNCounter, b: PNCounter):
     inc_a, dec_a = a
